@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-50: oklch(0.97 0.013 250.83);
+  --color-blue-100: oklch(0.93 0.034 250.83);
+  --color-blue-200: oklch(0.85 0.068 252.38);
+  --color-blue-500: oklch(0.56 0.175 252.77);
+  --color-blue-600: oklch(0.49 0.17 253.68);
+  --color-blue-700: oklch(0.42 0.15 254.52);
+  --color-blue-900: oklch(0.28 0.112 255.61);
+
+  --color-green-50: oklch(0.97 0.018 143.31);
+  --color-green-100: oklch(0.93 0.044 143.86);
+  --color-green-200: oklch(0.86 0.088 144.94);
+  --color-green-900: oklch(0.31 0.103 152.52);
+
+  --color-purple-50: oklch(0.97 0.016 297.72);
+  --color-purple-100: oklch(0.94 0.034 296.02);
+  --color-purple-200: oklch(0.88 0.069 294.33);
+  --color-purple-600: oklch(0.5 0.214 293.7);
+  --color-purple-900: oklch(0.31 0.142 297.38);
+
+  --color-gray-50: oklch(0.985 0 0);
+  --color-gray-100: oklch(0.97 0 0);
+  --color-gray-500: oklch(0.57 0 0);
+  --color-gray-600: oklch(0.51 0 0);
+  --color-gray-800: oklch(0.35 0 0);
+  --color-gray-900: oklch(0.26 0 0);
+}
+
+.bracket-line {
+    transition: opacity 0.2s, stroke-width 0.2s;
+}
+
+.bracket-line:hover {
+    opacity: 1;
+    stroke-width: 3;
+}

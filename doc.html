@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Projekt IIS</title>
+    <style type="text/css">
+        table { border-collapse: collapse; }
+        td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+        dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<h1>Studentské turnaje</h1>
+
+<dl>
+    <dt>Autoři</dt>
+    <dd>Vít Mrkvica
+        <a href="mailto:xmrkviv00@stud.fit.vutbr.cz">xmrkviv00@stud.fit.vutbr.cz</a> -
+        Uživatelské a týmové profily(statistiky, přidávání spoluhráčů, fitrace vlastních zápasů...). Vyhledávání týmů a uživatelů.
+    </dd>
+    <dd>Michal Matějka
+        <a href="mailto:xmatejm00@stud.fit.vutbr.cz">xmatejm00@stud.fit.vutbr.cz</a> - 
+        Login, všechno okolo tvoření zápasů a vizualizaci (pavouk, editace, výsledky ...), částečně turnaje (ceny, data)
+    </dd>
+  <dd>Ondra Jalůvka
+        <a href="mailto:xjaluvo00@stud.fit.vutbr.cz">xjaluvo00@stud.fit.vutbr.cz</a> - 
+        Základní struktura front-endu, správa turnajů, správa uživatelů a uživatelských profilů, funkce admina
+    </dd>
+    <dt>URL aplikace</dt>
+    <dd><a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
+    <dd>(pokud má aplikace více vstupních stránek, napište obdobně další URL)</dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+<tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin@example.com</td><td>password</td><td>Administrátor</td></tr>
+<tr><td>test@example.com</td><td>password</td><td>Registrovaný uživatel</td></tr>
+</tbody></table>
+
+<p>(Diagram případů užití není nutné vkládat, pokud IS implementuje role a případy užití definované zadáním.)</p> 
+
+<h3>Video</h3>
+
+<p> není ani piča</p>
+
+<p>Přiložte odkaz na komentované video demostrující použití informačního systému. Zaměřte se na případy užití definované zadáním (např. registrace uživatele, správa uživatelů a činnosti jednotlivých rolí). Video nahrajte například na VUT Google Drive, kde ho bude možné přímo spustit z odkazu.</p> 
+
+<h2>Implementace</h2>
+<p>Administrátor:</p>
+<ul>
+<li>správa uživatelů:</li>
+	<ul>
+		<li>/resources/views/admin/users/*</li>
+        <li>/app/Http/Controllers/UserController.php</li>
+	</ul>
+<li>schvalování turnajů:</li>
+    <ul>
+        <li>/resources/views/admin/tournaments/index.blade.php</li>
+        <li>/app/Http/Controllers/TournamentController.php</li>
+    </ul>
+</ul>
+<p>Registrovaný uživatel:</p>
+    <ul>
+        <li>editace vlastního profilu:</li>
+            <ul>
+                <li>/resources/views/profile.blade.php</li>
+                <li>/app/Http/Controllers/ProfileController.php</li>
+            </ul>
+        <li>správce týmu:</li>
+            <ul>
+                <li>vytváření týmů a přidávání členů:</li>
+                    <ul>
+                        <li>/resources/views/teams/create.blade.php</li>
+                        <li>/resources/views/teams/team-edit.blade.php</li>
+                        <li>/app/Http/Controllers/TeamController.php</li>
+                    </ul>
+                <li>přihlášení týmu na turnaj:</li>
+                    <ul>
+                        <li>/resources/views/tournaments/show.blade.php</li>
+                        <li>/app/Http/Controllers/TournamentController.php</li>
+                    </ul>
+            </ul>
+        <li>správce turnaje:</li>
+        <ul>
+            <li>vytváření turnajů:</li>
+                <ul>
+                    <li>/resources/views/tournaments/create.blade.php</li>
+                    <li>/resources/views/tournaments/show.blade.php</li>
+                    <li>/app/Http/Controllers/TournamentController.php</li>
+                </ul>
+            <li>správa vlastních turnajů:</li>
+                <ul>
+                    <li>/resources/views/tournaments/manage-contestants.blade.php</li>
+                    <li>/app/Http/Controllers/TournamentController.php</li>
+                </ul>
+            <li>generování pavouka zápasů a náhodná generace:</li>
+                <ul>
+                    <li>/resources/views/tournaments/manage-contestants.blade.php</li>
+                    <li>/app/Http/Controllers/BracketController.php</li>
+                </ul>
+            <li>zadávání výsledků a editace zápasů:</li>
+                <ul>
+                    <li>/resources/views/matches/*</li>
+                    <li>/app/Http/Controllers/MatchController.php</li>
+                </ul>
+        </ul>
+        <li>hráč turnaje:</li>
+            <ul>
+                <li>prohlížení turnajů a zápasů (harmonogram) + výsledky:</li>
+                    <ul>
+                        <li>/resources/views/tournaments/show.blade.php</li>
+                        <li>/resources/views/users/user.blade.php</li>
+                        <li>/app/Http/Controllers/TournamentController.php</li>
+                        <li>/app/Http/Controllers/UserController.php</li>
+                    </ul>
+            </ul>
+    </ul>
+<p>Neregistrovaný uživatel:</p>
+    <ul>
+        <li>prohlížení veřejných informací o turnajích a uživatelích:</li>
+        <ul>
+            <li>/resources/home.blade.php</li>
+            <li>/resources/views/tournaments/index.blade.php</li>
+            <li>/resources/views/tournaments/show.blade.php</li>
+            <li>/resources/views/users/users.blade.php</li>
+            <li>/resources/views/users/user.blade.php</li>
+            <li>/app/Http/Controllers/TournamentController.php</li>
+            <li>/app/Http/Controllers/UserController.php</li>
+            <li>/app/Http/Controllers/HomeController.php</li>
+        </ul>
+    </ul>
+
+<h3>Databáze</h3>
+
+TODO
+
+<h2>Instalace</h2>
+
+TODO
+Stručně popište: 
+<ul>
+<li>postup instalace na server,</li>
+<li>softwarové požadavky (verze PHP apod.),</li>
+<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
+</ul>
+
+<h2>Známé problémy</h2>
+IDK
+<p>Zde popište, které body zadání nejsou implementovány a z jakého důvodu. Např. „Z časových důvodů nebyla implementována správa uživatelů." Pomůžete tím zrychlit hodnocení, když neimplementované funkce nebudeme muset dlouze hledat.</p>
+
+</body>
+</html>

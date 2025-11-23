@@ -1,0 +1,37 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+    "./app/**/*.php",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+  safelist: [
+    'bg-gradient-to-br',
+    'from-blue-50',
+    'to-blue-100',
+    'from-green-50',
+    'to-green-100',
+    'from-purple-50',
+    'to-purple-100',
+    'from-blue-500',
+    'to-purple-600',
+    'from-blue-600',
+    'to-blue-700',
+    'border-blue-200',
+    'border-green-200',
+    'border-purple-200',
+    'text-blue-600',
+    'text-blue-900',
+    'text-green-900',
+    'text-purple-600',
+    'text-purple-900',
+    'hover:bg-blue-50',
+    'hover:bg-green-50',
+    'hover:bg-purple-50',
+  ],
+}
